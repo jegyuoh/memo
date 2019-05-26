@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block memoblock %}
+<h1>{{ memo.title }}</h1>
+<p>{{ memo.id }}</p>
+<p>{{ memo.created_at }}</p>
+
+{% if memo.image %}
+<img src="{{ memo.image.url }}" alt="memo">
+{% endif %}
+
+<p>{{ memo.content }}</p>
+<a href="/memo">홈으로</a>
+
+<form action="/memo/comentcreate/{{ memo.id }}" method="POST">
+  {% csrf_token %}
+  <div>
+    <label for="coment_content">댓글</label>
+    <textarea name="coment_content" id="coment_content" cols="30" rows="10"></textarea>
+  </div>
+  <button type="submit">댓글쓰기</button>
+</form>
+
+{% for c in coments %}
+<div>
+  <p>{{ c.content }}</p>
+  <p>{{ c.created_at }}</p>
+</div>
+{% endfor %}
+{% endblock %}

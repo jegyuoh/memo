@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block memoblock %}
+<a href="/memo/new">글쓰러가기</a>
+<h1>메모들</h1>
+{% for memo in memos %}
+<div>
+  <h2><a href="/memo/show/{{ memo.id }}">{{ memo.title }}</a></h2>
+  {{ memo.id }}
+  <p>{{ memo.created_at }}</p>
+  <a href="/memo/edit/{{ memo.id }}">수정</a>
+  <a href="/memo/delete/{{ memo.id }}">삭제</a>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block memoblock %}
+<form action="/memo/create" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div>
+    <label for="title">제목</label><br>
+    <input type="text" name="title" id="title">
+  </div>
+  <div>
+      <label for="content">내용</label><br>
+    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+  </div>
+  <div>
+    <input type="file" accept="image/*" name="image">
+  </div>
+  <input type="submit" value="글쓰기">
+</form>
+{% endblock %}
